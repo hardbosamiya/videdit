@@ -160,3 +160,64 @@ GET /api/auth/me
 
 
 ### Jobs
+
+POST /api/jobs
+GET /api/jobs/my
+POST /api/jobs/:id/deliver
+PATCH /api/jobs/:id/set-price
+
+---
+
+### Chat
+
+GET /api/chat/:jobId
+POST /api/chat/:jobId
+
+
+---
+
+## 🔐 Default Super Admin
+
+Email: superadmin@videdit.com
+Password: SuperAdmin@123
+
+---
+
+⚠️ Change after first login.
+
+---
+
+## 🧠 Tech Stack
+
+- Frontend: Next.js, Tailwind CSS  
+- Backend: Node.js, Express  
+- Database: MongoDB  
+- Real-time: Socket.IO  
+- Auth: JWT  
+- Storage: Cloudinary  
+- Email: Nodemailer  
+
+---
+
+## 🛡️ Security Notes
+
+- Do NOT commit `.env` files  
+- Use `.gitignore`  
+- Rotate secrets if exposed  
+
+---
+
+## 🤝 Contributing
+
+1. Fork repo  
+2. Create branch  
+3. Make changes  
+4. Submit PR  
+
+---
+
+## ⭐ Final Note
+
+Production-ready system for video editing workflow with real-time collaboration.
+
+---
