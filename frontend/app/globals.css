@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Bebas Neue', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  background: #0f0f0f;
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #161616; }
+::-webkit-scrollbar-thumb { background: #2e2e2e; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3e3e3e; }
+
+/* Selection */
+::selection { background: rgba(249,115,22,0.3); color: #fff; }
+
+/* Focus */
+:focus-visible { outline: 2px solid #f97316; outline-offset: 2px; border-radius: 4px; }
+
+@layer components {
+  .btn-primary {
+    @apply bg-brand-500 hover:bg-brand-600 active:bg-brand-700 text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-surface-3 hover:bg-surface-4 text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-150 border border-surface-4;
+  }
+  .btn-ghost {
+    @apply hover:bg-surface-2 text-gray-400 hover:text-white font-medium px-4 py-2 rounded-lg transition-all duration-150;
+  }
+  .input {
+    @apply w-full bg-surface-2 border border-surface-3 rounded-lg px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors;
+  }
+  .card {
+    @apply bg-surface-1 border border-surface-3 rounded-xl p-6;
+  }
+  .badge-none     { @apply bg-gray-800 text-gray-400; }
+  .badge-bronze   { @apply bg-amber-900/40 text-amber-500 border border-amber-700/40; }
+  .badge-silver   { @apply bg-gray-700/40 text-gray-300 border border-gray-500/40; }
+  .badge-gold     { @apply bg-yellow-900/40 text-yellow-400 border border-yellow-600/40; }
+  .badge-platinum { @apply bg-cyan-900/40 text-cyan-300 border border-cyan-500/40; }
+  .badge-diamond  { @apply bg-purple-900/40 text-purple-300 border border-purple-500/40; }
+
+  .status-pending          { @apply bg-gray-800 text-gray-400; }
+  .status-price_discussion { @apply bg-blue-900/40 text-blue-400; }
+  .status-ongoing          { @apply bg-orange-900/40 text-orange-400; }
+  .status-review           { @apply bg-yellow-900/40 text-yellow-400; }
+  .status-revision         { @apply bg-red-900/40 text-red-400; }
+  .status-completed        { @apply bg-green-900/40 text-green-400; }
+}
