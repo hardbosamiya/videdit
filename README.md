@@ -200,8 +200,7 @@ Password: SuperAdmin@123
 ---
 
 ## 🛡️ Security Notes
-
-- Do NOT commit `.env` files  
+ 
 - Use `.gitignore`  
 - Rotate secrets if exposed  
 
