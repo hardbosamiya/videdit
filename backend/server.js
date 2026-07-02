@@ -72,17 +72,23 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Dat
 setupSocketIO(io);
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, { serverSelectionTimeoutMS: 3000 })
-  .then(async () => {
-    console.log('✅ MongoDB connected');
-    await seedSuperAdmin();
-  })
-  .catch(err => {
-    console.error('❌ MongoDB connection error:', err.message);
-    console.log('⚠️  Server starting without database connection. Check your MONGODB_URI in .env');
-  });
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI, { serverSelectionTimeoutMS: 3000 })
+    .then(async () => {
+      console.log('✅ MongoDB connected');
+      await seedSuperAdmin();
+    })
+    .catch(err => {
+      console.error('❌ MongoDB connection error:', err.message);
+      console.log('⚠️  Server starting without database connection. Check your MONGODB_URI in .env');
+    });
+} else {
+  console.log('⚠️  No MONGODB_URI provided in environment variables. Database connection skipped.');
+}
 
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  server.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+}
 
-module.exports = { app, io };
+module.exports = app;
