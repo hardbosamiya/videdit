@@ -66,6 +66,7 @@ app.use('/api/jobs', jobRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/contact', contactRoutes);
 
+app.get('/', (req, res) => res.send('API is running successfully.'));
 app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Date().toISOString() }));
 
 // Socket.IO setup
